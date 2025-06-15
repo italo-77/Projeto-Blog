@@ -1,0 +1,50 @@
+title: Invictus Soluções
+email: contato@italo-fronte.online
+description: Inspirando o futuro, Mestres da gambiarra.
+url: "https://seudominio.com" # troque pelo seu domínio real
+baseurl: "" # use "" se estiver na raiz, ou "/nomedosite" se for GitHub Pages
+lang: pt-BR
+
+# Permalink padrão para os posts
+permalink: /:title/
+
+# Markdown e destaque de código
+markdown: kramdown
+highlighter: rouge
+
+# Plugins
+plugins:
+  - jekyll-paginate-v2
+  
+  - jekyll-sitemap
+
+# Paginação
+pagination:
+  enabled: true
+  per_page: 6
+  permalink: /blog/page:num/
+  title: ':title - Página :num'
+  trail:
+    before: 2
+    after: 2
+
+# Defaults para posts
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+      author: Invictus
+      lang: pt-BR
+
+# Diretórios padrão para mídia (usado com Netlify CMS, por exemplo)
+media_folder: "assets/img"
+public_folder: "/assets/img"
+
+# Itens a excluir da build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
