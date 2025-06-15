@@ -11,15 +11,23 @@ const { complete } = createHandlers(
 );
 
 exports.handler = async (event, context) => {
-  const result = await complete(event, context);
+  try {
+    const result = await complete(event, context);
 
-  if (typeof result === 'string') {
+    if (typeof result === 'string') {
+      return {
+        statusCode: 200,
+        headers: { 'Content-Type': 'text/html' },
+        body: result,
+      };
+    }
+
+    return result;
+  } catch (error) {
+    console.error("Erro no auth-callback:", error);
     return {
-      statusCode: 200,
-      headers: { 'Content-Type': 'text/html' },
-      body: result,
+      statusCode: 500,
+      body: JSON.stringify({ error: "Erro interno na autenticação" }),
     };
   }
-
-  return result;
 };
