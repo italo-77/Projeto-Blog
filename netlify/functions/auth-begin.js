@@ -10,4 +10,6 @@ const { begin } = createHandlers(
   { useEnv: true }
 );
 
-exports.handler = begin;
+exports.handler = async (event, context) => {
+  return await begin(event, context);
+};
