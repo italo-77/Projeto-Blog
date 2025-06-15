@@ -13,7 +13,6 @@ const { complete } = createHandlers(
 exports.handler = async (event, context) => {
   const result = await complete(event, context);
 
-  // Garante que o retorno seja compatível com o Netlify
   if (typeof result === 'string') {
     return {
       statusCode: 200,
