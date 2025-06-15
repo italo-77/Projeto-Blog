@@ -1,0 +1,26 @@
+.bloco-politica {
+	border: 1.5px solid white;
+	border-radius: 25px;
+	margin: 20px;
+	padding: 15px;
+}
+
+.bloco-politica h2 {
+	color: darkblue;
+	font-size: 120%;
+	font-family: times new roman;
+	margin: 10px;
+}
+
+.bloco-politica p {
+	color: white;
+	font-size: 100%;
+	font-family: georgia;
+}
+
+.vigencia {
+	border: 1.3px solid darkblue;
+	border-radius: 25px;
+	padding: 15px;
+	margin: 10px;
+}

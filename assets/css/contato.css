@@ -1,0 +1,21 @@
+.producao {
+	border: 1.5px solid darkred;
+	border-radius: 25px;
+	margin: 25px;
+	padding: 10px;
+	gap: 10px;
+}
+
+.producao h2 {
+	text-align: center;
+	color: red;
+	font-family: times new roman;
+	margin: 10px auto;
+}
+
+.producao p {
+	color: ghostwhite;
+	font-family: georgia;
+	font-size: 100%;
+	text-align: center;
+}

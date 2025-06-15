@@ -1,0 +1,165 @@
+/* CONFIGURAÇÃO DO HEADER */
+#banner-principal {
+  border-bottom: 1.5px solid white;
+  width: 100%;
+  height: 180px;
+  top: 0;
+}
+
+
+/* Configuração da logo marca */
+#logo-marca {
+  justify-items: center;
+margin-top: -100px;
+}
+
+#logo-marca img {
+  border: 1.8px solid white;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+}
+
+#logo-marca h1 {
+  color: white;
+  font-family: Times New Roman, serif;
+  font-size: 130%;
+}
+
+#logo-marca p {
+  color: bisque;
+  font-family: Georgia, serif;
+  font-size: 110%;
+}
+
+
+/* Configuração da lista de navegação*/
+#menu a {
+  text-decoration: none;
+  font-family: Times New Roman, serif;
+  font-weight: bold;
+  font-size: 125%;
+  color: whitesmoke;
+}
+
+#menu li {
+  border-bottom: 1.3px solid white;
+  padding: 7px;
+}
+
+#menu ul {
+list-style: none;
+padding: 15px;
+}
+
+/* Configuração do Overlay */
+#espaco-vazio {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  display: none;
+  z-index: 900;
+}
+
+
+/* Configuração do side-bar */
+#side-bar {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: 4rem;
+  color: white;
+  cursor: pointer;
+  z-index: 2000;
+}
+
+
+/* Configuração do menu */
+#menu {
+  border-right: 1.7px solid white;
+  left: -300px;
+  width: 280px;
+  height: 100vh;
+  padding: 15px;
+  background-color: black;
+  transition: left 2s ease;
+  z-index: 1000;
+}
+
+#menu.active {
+  left: 0;
+}
+
+
+/* CONFIGURAÇÃO DO FOOTER */
+footer {
+   width: 100%;
+   bottom: 0;
+   background-color: grey;
+   border-top: 1.5px solid white;
+}
+
+.direitos {
+   font-family: times new roman;
+   font-size: 110%;
+   text-align: center;
+}
+
+.ferramentas {
+   font-size: 110%;
+   font-family: times new roman;
+   text-align: center;
+}
+
+.ferramentas a {
+   text-decoration: none;
+   color: whitesmoke;
+}
+
+.referencias {
+   display: flex;
+   justify-content: center;
+}
+
+.referencias a {
+   color: whitesmoke;
+   text-decoration: none;
+   padding: 7px;
+   font-weight: bold;
+   font-size: 100%;
+   font-family: georgia;
+}
+
+.social {
+   display: flex;
+   justify-content: center;
+   padding: 15px;
+   gap: 15px;
+}
+
+.whatsapp {
+   text-decoration: none;
+   color: whitesmoke;
+   background: transparent;
+   border: 1.5px solid greenyellow;
+   border-radius: 25px;
+   padding: 5px 15px;
+   font-family: times new roman;
+   font-size: 120%;
+   font-weight: bold;
+}
+
+.github {
+      text-decoration: none;
+   color: whitesmoke;
+   background: transparent;
+   border: 1.5px solid black;
+   border-radius: 25px;
+   padding: 5px 15px;
+   font-family: times new roman;
+   font-size: 120%;
+   font-weight: bold;
+}
