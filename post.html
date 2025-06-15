@@ -1,0 +1,58 @@
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post-header">
+    <h1>{{ page.title }}</h1>
+    <p class="post-meta">
+      Publicado em {{ page.date | date: "%d de %B de %Y" }}
+      {% if page.author %} · por {{ page.author }}{% endif %}
+      {% assign words = content | number_of_words %}
+      {% assign reading_time = words | divided_by:200 | ceil %}
+      · {{ reading_time }} min de leitura
+    </p>
+
+    {% if page.image %}
+      <img src="{{ page.image }}" alt="{{ page.title }}" class="post-banner">
+    {% endif %}
+  </header>
+
+  <section class="post-body">
+    {{ content }}
+  </section>
+
+  <section class="post-share">
+    <h3>Compartilhar</h3>
+    <div class="share-buttons">
+      <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" target="_blank" title="Compartilhar no Twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" target="_blank" title="Compartilhar no Facebook">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="https://www.linkedin.com/shareArticle?url={{ site.url }}{{ page.url }}" target="_blank" title="Compartilhar no LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </div>
+  </section>
+
+  <section id="comentarios" class="post-comments">
+    <h2>Comentários</h2>
+<script src="https://giscus.app/client.js"
+        data-repo="italo-77/projeto-blog"
+        data-repo-id="R_kgDOO7brrA"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOO7brrM4CrhMn"
+        data-mapping="pathname"
+        data-strict="1"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="cobalt"
+        data-lang="pt"
+        crossorigin="anonymous"
+        async>
+</script>
+  </section>
+</article>
