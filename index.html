@@ -1,0 +1,48 @@
+---
+layout: default
+title: Blog
+permalink: /blog/
+pagination:
+  enabled: true
+---
+
+<section class="blog-cards">
+  <h1>Publicações recentes</h1>
+
+  {% for post in paginator.posts %}
+    <article class="post-card">
+      <a href="{{ post.url }}">
+        {% if post.image %}
+          <img src="{{ post.image }}" alt="{{ post.title }}" class="post-thumb">
+        {% endif %}
+        <div class="post-content">
+          <h2>{{ post.title }}</h2>
+          <p class="post-meta">
+            {{ post.date | date: "%d de %B de %Y" }} · 
+            {{ post.categories | join: ', ' }}
+          </p>
+          <p class="post-excerpt">
+            {{ post.description | default: post.excerpt | strip_html | truncate: 140 }}
+          </p>
+          <span class="leia-mais">Ler mais →</span>
+        </div>
+      </a>
+    </article>
+  {% endfor %}
+
+  <nav class="paginacao">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path }}" class="anterior">← Anterior</a>
+    {% endif %}
+    {% for page in (1..paginator.total_pages) %}
+      {% if page == paginator.page %}
+        <span class="pagina-atual">{{ page }}</span>
+      {% else %}
+        <a href="{{ paginator.paginate_path | replace: ':num', page }}" class="outra-pagina">{{ page }}</a>
+      {% endif %}
+    {% endfor %}
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path }}" class="proxima">Próxima →</a>
+    {% endif %}
+  </nav>
+</section>
