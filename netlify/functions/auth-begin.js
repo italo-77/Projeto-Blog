@@ -11,5 +11,16 @@ const { begin } = createHandlers(
 );
 
 exports.handler = async (event, context) => {
-  return await begin(event, context);
+  const result = await begin(event, context);
+
+  // Se o resultado for uma string, converte para o formato esperado
+  if (typeof result === 'string') {
+    return {
+      statusCode: 200,
+      headers: { 'Content-Type': 'text/html' },
+      body: result,
+    };
+  }
+
+  return result;
 };
