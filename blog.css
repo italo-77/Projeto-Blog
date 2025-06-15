@@ -1,0 +1,85 @@
+.blog-cards {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.post-card {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.post-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.post-card img.post-thumb {
+  width: 35%;
+  object-fit: cover;
+}
+
+.post-content {
+  padding: 1rem;
+}
+
+.post-meta {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+}
+
+.leia-mais {
+  font-weight: bold;
+  color: #0056cc;
+}
+
+.paginacao {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.paginacao a,
+.paginacao span {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.pagina-atual {
+  background: #0056cc;
+  color: #fff;
+}
+
+.post-meta {
+  font-size: 0.9em;
+  color: #777;
+  margin-bottom: 1.5em;
+}
+
+.post-banner {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 1.5em 0;
+}
+
+.share-buttons a {
+  margin-right: 1em;
+  font-size: 1.4em;
+  color: #444;
+  transition: color 0.3s ease;
+}
+
+.share-buttons a:hover {
+  color: #0077cc;
+}
+
+#comentarios {
+  margin-top: 3em;
+}
