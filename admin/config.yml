@@ -1,0 +1,26 @@
+backend:
+  name: github
+  repo: italo-77/projeto-blog
+  branch: main
+
+media_folder: "assets/img"
+public_folder: "/assets/img"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: "{{slug}}"
+    path: "{{year}}/{{month}}/{{day}}/{{slug}}/index"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Slug Personalizado", name: "slug", widget: "string", required: false, hint: "Deixe vazio para gerar automaticamente" }
+      - { label: "Data", name: "date", widget: "datetime", format: "YYYY-MM-DD HH:mm" }
+      - { label: "Autor", name: "author", widget: "string", default: "Invictus" }
+      - { label: "Categorias", name: "categories", widget: "list", allow_add: true, default: ["sem-categoria"] }
+      - { label: "Imagem de capa", name: "image", widget: "image" }
+      - { label: "Descrição (SEO)", name: "description", widget: "text", required: false, hint: "Máx. 160 caracteres. Melhora o SEO e o compartilhamento." }
+      - { label: "Conteúdo", name: "body", widget: "markdown" }
