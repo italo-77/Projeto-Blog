@@ -11,5 +11,15 @@ const { complete } = createHandlers(
 );
 
 exports.handler = async (event, context) => {
-  return await complete(event, context);
+  const result = await complete(event, context);
+
+  if (typeof result === 'string') {
+    return {
+      statusCode: 200,
+      headers: { 'Content-Type': 'text/html' },
+      body: result,
+    };
+  }
+
+  return result;
 };
