@@ -10,4 +10,6 @@ const { complete } = createHandlers(
   { useEnv: true }
 );
 
-exports.handler = complete;
+exports.handler = async (event, context) => {
+  return await complete(event, context);
+};
