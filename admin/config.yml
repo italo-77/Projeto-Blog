@@ -2,6 +2,9 @@ backend:
   name: github
   repo: italo-77/projeto-blog
   branch: main
+  auth_scope: repo
+  base_url: https://meu-blog-cms.netlify.app
+  auth_endpoint: callback
 
 media_folder: "assets/img"
 public_folder: "/assets/img"
