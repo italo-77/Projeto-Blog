@@ -1,5 +1,5 @@
 backend:
-  name: github
+  name: git-gateway
   repo: italo-77/projeto-blog
   branch: main
 
