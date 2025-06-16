@@ -11,16 +11,23 @@ const { begin } = createHandlers(
 );
 
 exports.handler = async (event, context) => {
-  const result = await begin(event, context);
+  try {
+    const result = await begin(event, context);
 
-  // Se o resultado for uma string, converte para o formato esperado
-  if (typeof result === 'string') {
+    if (typeof result === 'string') {
+      return {
+        statusCode: 200,
+        headers: { 'Content-Type': 'text/html' },
+        body: result,
+      };
+    }
+
+    return result;
+  } catch (err) {
+    console.error('Erro em auth-begin:', err);
     return {
-      statusCode: 200,
-      headers: { 'Content-Type': 'text/html' },
-      body: result,
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Erro interno ao iniciar autenticação' }),
     };
   }
-
-  return result;
 };
