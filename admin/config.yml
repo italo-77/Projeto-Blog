@@ -1,6 +1,5 @@
 backend:
   name: git-gateway
-  repo: italo-77/projeto-blog
   branch: main
 
 media_folder: "assets/img"
