@@ -42,6 +42,9 @@ defaults:
 media_folder: "assets/img"
 public_folder: "/assets/img"
 
+# Para incluir a pasta admin no build
+include:
+  - admin
 # Itens a excluir da build
 exclude:
   - Gemfile
