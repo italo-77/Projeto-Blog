@@ -1,8 +1,8 @@
 title: Invictus Soluções
 email: contato@italo-fronte.online
 description: Inspirando o futuro, Mestres da gambiarra.
-url: "https://italo-fronte.online" # troque pelo seu domínio real
-baseurl: "" # use "" se estiver na raiz, ou "/nomedosite" se for GitHub Pages
+url: "https://italo-fronte.online"
+baseurl: ""
 lang: pt-BR
 
 # Permalink padrão para os posts
