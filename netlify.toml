@@ -4,3 +4,9 @@
 
 [build.environment]
   RUBY_VERSION = "3.1.2"
+
+  [[redirects]]
+  from = "https://italo-fronte.online/*"
+  to = "https://meu-blog-cms.netlify.app/:splat"
+  status = 301
+  force = true
