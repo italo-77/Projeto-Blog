@@ -1,0 +1,56 @@
+name: 🔔 Notificações no Telegram
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, closed, synchronize]
+
+jobs:
+  notificar:
+    runs-on: ubuntu-latest
+    name: 🚨 Notificar Telegram
+
+    steps:
+      - name: 🔄 Clonar repositório
+        uses: actions/checkout@v4
+
+      - name: 📋 Listar arquivos alterados
+        id: changes
+        run: |
+          ARCHIVES=$(git diff --name-only HEAD~1 HEAD | head -n 10 | sed ':a;N;$!ba;s/\n/\\n/g')
+          echo "arquivos=$ARCHIVES" >> $GITHUB_OUTPUT
+
+      - name: 🧠 Gerar mensagem
+        id: mensagem
+        run: |
+          AUTOR=${{ github.actor }}
+          EVENTO=${{ github.event_name }}
+          BRANCH=${{ github.ref_name }}
+          COMMIT_URL="https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
+          MSG="🔔 *$EVENTO* em *$BRANCH* por [$AUTOR](https://github.com/$AUTOR)%0A"
+          MSG+="📦 [Ver commit]($COMMIT_URL)%0A"
+
+          if [ -n "${{ steps.changes.outputs.arquivos }}" ]; then
+            MSG+="📝 Arquivos modificados:%0A"
+            MSG+="${{ steps.changes.outputs.arquivos }}%0A"
+          fi
+
+          echo "msg=$MSG" >> $GITHUB_OUTPUT
+
+      - name: ✅ Rodar testes
+        id: testes
+        continue-on-error: true
+        run: npm test
+
+      - name: 📲 Notificar no Telegram
+        run: |
+          STATUS="✅ *Testes passaram com sucesso!*"
+          if [ ${{ steps.testes.outcome }} != "success" ]; then
+            STATUS="❌ *Testes falharam!*"
+          fi
+
+          curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage \
+            -d chat_id=${{ secrets.TELEGRAM_CHAT_ID }} \
+            -d parse_mode=Markdown \
+            -d text="${{ steps.mensagem.outputs.msg }}%0A$STATUS"
