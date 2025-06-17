@@ -1,0 +1,22 @@
+---
+layout: default
+title: Portfólio
+description: Conheça nossos projetos de design, web e soluções digitais.
+---
+
+<h1>Portfólio</h1>
+
+<div class="portfolio-lista">
+  {% for item in site.portfolio %}
+    <article class="card-portfolio">
+      <img src="{{ item.image }}" alt="{{ item.title }}">
+      <div class="conteudo">
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.description }}</p>
+        {% if item.link %}
+          <a href="{{ item.link }}" class="botao" target="_blank" rel="noopener">Ver projeto</a>
+        {% endif %}
+      </div>
+    </article>
+  {% endfor %}
+</div>

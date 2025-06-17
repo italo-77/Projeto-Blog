@@ -1,0 +1,37 @@
+---
+layout: default
+---
+
+<article class="projeto-individual">
+
+  <header class="projeto-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.cliente %}
+      <p class="projeto-cliente">Cliente: {{ page.cliente }}</p>
+    {% endif %}
+    {% if page.date %}
+      <time class="projeto-data">{{ page.date | date: "%d/%m/%Y" }}</time>
+    {% endif %}
+  </header>
+
+  {% if page.image %}
+    <figure class="projeto-imagem">
+      <img src="{{ page.image }}" alt="{{ page.title }}">
+    </figure>
+  {% endif %}
+
+  {% if page.description %}
+    <p class="projeto-descricao">{{ page.description }}</p>
+  {% endif %}
+
+  {% if page.link %}
+    <p class="projeto-link">
+      <a href="{{ page.link }}" target="_blank" rel="noopener">Visitar Projeto</a>
+    </p>
+  {% endif %}
+
+  <div class="projeto-conteudo">
+    {{ content }}
+  </div>
+
+</article>

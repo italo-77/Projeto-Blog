@@ -1,0 +1,17 @@
+---
+layout: default
+title: Equipe
+description: Conheça quem faz parte da Invictus Soluções.
+---
+
+<h1>Nossa Equipe</h1>
+
+<div class="autores-lista">
+  {% for autor in site.autores %}
+    <div class="autor-card">
+      <img src="{{ autor.avatar }}" alt="{{ autor.name }}">
+      <h2>{{ autor.name }}</h2>
+      <p>{{ autor.bio }}</p>
+    </div>
+  {% endfor %}
+</div>

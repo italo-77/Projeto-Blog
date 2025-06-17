@@ -5,21 +5,98 @@ backend:
 media_folder: "assets/img"
 public_folder: "/assets/img"
 
+publish_mode: editorial_workflow
+site_url: "https://italo-fronte.online"
+logo_url: "/assets/img/logo-invictus.jpeg"
+
+slug:
+  encoding: "ascii"
+  clean_accents: true
+
 collections:
   - name: "posts"
     label: "Posts"
     folder: "_posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    preview_path: "{{slug}}"
-    path: "{{year}}/{{month}}/{{day}}/{{slug}}/index"
+    preview_path: "blog/{{year}}/{{month}}/{{day}}/{{slug}}"
+    path: "blog/{{year}}/{{month}}/{{day}}/{{slug}}/index"
+    summary: "{{title}} — {{date}}"
+    sortable_fields: ["date", "title"]
     fields:
       - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+      - { label: "Publicado?", name: "published", widget: "boolean", default: true }
       - { label: "Título", name: "title", widget: "string" }
-      - { label: "Slug Personalizado", name: "slug", widget: "string", required: false, hint: "Deixe vazio para gerar automaticamente" }
-      - { label: "Data", name: "date", widget: "datetime", format: "YYYY-MM-DD HH:mm" }
-      - { label: "Autor", name: "author", widget: "string", default: "Invictus" }
-      - { label: "Categorias", name: "categories", widget: "list", allow_add: true, default: ["sem-categoria"] }
-      - { label: "Imagem de capa", name: "image", widget: "image" }
-      - { label: "Descrição (SEO)", name: "description", widget: "text", required: false, hint: "Máx. 160 caracteres. Melhora o SEO e o compartilhamento." }
+      - { label: "Slug Personalizado", name: "slug", widget: "string", required: false }
+      - { label: "Data", name: "date", widget: "datetime" }
+      - {
+          label: "Autor",
+          name: "author",
+          widget: "relation",
+          collection: "authors",
+          search_fields: ["name"],
+          value_field: "name",
+          display_fields: ["name"],
+          required: false
+        }
+      - { label: "Categorias", name: "categories", widget: "list", allow_add: true }
+      - { label: "Imagem de Capa", name: "image", widget: "image", required: false }
+      - { label: "Alt da Imagem", name: "image_alt", widget: "string", required: false }
+      - { label: "Descrição (SEO)", name: "description", widget: "text", required: false }
       - { label: "Conteúdo", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Páginas"
+    editor:
+      preview: false
+    files:
+      - label: "Início"
+        name: "inicio"
+        file: "index.html"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Descrição", name: "description", widget: "text" }
+          - { label: "Conteúdo", name: "body", widget: "markdown" }
+      - label: "Sobre Nós"
+        name: "sobre"
+        file: "sobre-nos.html"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Descrição", name: "description", widget: "text" }
+          - { label: "Conteúdo", name: "body", widget: "markdown" }
+      - label: "Contato"
+        name: "contato"
+        file: "contato.html"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Descrição", name: "description", widget: "text" }
+          - { label: "Conteúdo", name: "body", widget: "markdown" }
+
+  - name: "portfolio"
+    label: "Portfólio"
+    folder: "_portfolio"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "portfolio" }
+      - { label: "Título do Projeto", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", required: false }
+      - { label: "Data", name: "date", widget: "datetime" }
+      - { label: "Cliente", name: "cliente", widget: "string", required: false }
+      - { label: "Imagem de Destaque", name: "image", widget: "image" }
+      - { label: "Descrição", name: "description", widget: "text" }
+      - { label: "Link do Projeto", name: "link", widget: "string", required: false }
+      - { label: "Conteúdo Completo", name: "body", widget: "markdown" }
+
+  - name: "authors"
+    label: "Autores"
+    folder: "_autores"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{name}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "author" }
+      - { label: "Nome", name: "name", widget: "string" }
+      - { label: "Bio", name: "bio", widget: "text" }
+      - { label: "Foto", name: "avatar", widget: "image", required: false }
