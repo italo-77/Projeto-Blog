@@ -1,33 +1,18 @@
-backend:
-  name: git-gateway
-  branch: main
-
-media_folder: "assets/img"
-public_folder: "/assets/img"
-
-publish_mode: editorial_workflow
-site_url: "https://italo-fronte.online"
-logo_url: "/assets/img/logo-invictus.jpeg"
-
-slug:
-  encoding: "ascii"
-  clean_accents: true
-
 collections:
   - name: "posts"
     label: "Posts"
     folder: "_posts"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    preview_path: "blog/{{year}}/{{month}}/{{day}}/{{slug}}"
-    path: "blog/{{year}}/{{month}}/{{day}}/{{slug}}/index"
+    slug: "{{year}}-{{month}}-{{day}}-{{fields.custom_slug}}"
+    preview_path: "blog/{{year}}/{{month}}/{{day}}/{{fields.custom_slug}}"
+    path: "blog/{{year}}/{{month}}/{{day}}/{{fields.custom_slug}}/index"
     summary: "{{title}} — {{date}}"
     sortable_fields: ["date", "title"]
     fields:
       - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
       - { label: "Publicado?", name: "published", widget: "boolean", default: true }
       - { label: "Título", name: "title", widget: "string" }
-      - { label: "Slug Personalizado", name: "slug", widget: "string", required: false }
+      - { label: "Slug Personalizado", name: "custom_slug", widget: "string", required: true }
       - { label: "Data", name: "date", widget: "datetime" }
       - {
           label: "Autor",
@@ -44,59 +29,3 @@ collections:
       - { label: "Alt da Imagem", name: "image_alt", widget: "string", required: false }
       - { label: "Descrição (SEO)", name: "description", widget: "text", required: false }
       - { label: "Conteúdo", name: "body", widget: "markdown" }
-
-  - name: "pages"
-    label: "Páginas"
-    editor:
-      preview: false
-    files:
-      - label: "Início"
-        name: "inicio"
-        file: "index.html"
-        fields:
-          - { label: "Título", name: "title", widget: "string" }
-          - { label: "Descrição", name: "description", widget: "text" }
-          - { label: "Conteúdo", name: "body", widget: "markdown" }
-      - label: "Sobre Nós"
-        name: "sobre"
-        file: "sobre-nos.html"
-        fields:
-          - { label: "Título", name: "title", widget: "string" }
-          - { label: "Descrição", name: "description", widget: "text" }
-          - { label: "Conteúdo", name: "body", widget: "markdown" }
-      - label: "Contato"
-        name: "contato"
-        file: "contato.html"
-        fields:
-          - { label: "Título", name: "title", widget: "string" }
-          - { label: "Descrição", name: "description", widget: "text" }
-          - { label: "Conteúdo", name: "body", widget: "markdown" }
-
-  - name: "portfolio"
-    label: "Portfólio"
-    folder: "_portfolio"
-    create: true
-    slug: "{{slug}}"
-    summary: "{{title}}"
-    fields:
-      - { label: "Layout", name: "layout", widget: "hidden", default: "portfolio" }
-      - { label: "Título do Projeto", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string", required: false }
-      - { label: "Data", name: "date", widget: "datetime" }
-      - { label: "Cliente", name: "cliente", widget: "string", required: false }
-      - { label: "Imagem de Destaque", name: "image", widget: "image" }
-      - { label: "Descrição", name: "description", widget: "text" }
-      - { label: "Link do Projeto", name: "link", widget: "string", required: false }
-      - { label: "Conteúdo Completo", name: "body", widget: "markdown" }
-
-  - name: "authors"
-    label: "Autores"
-    folder: "_autores"
-    create: true
-    slug: "{{slug}}"
-    summary: "{{name}}"
-    fields:
-      - { label: "Layout", name: "layout", widget: "hidden", default: "author" }
-      - { label: "Nome", name: "name", widget: "string" }
-      - { label: "Bio", name: "bio", widget: "text" }
-      - { label: "Foto", name: "avatar", widget: "image", required: false }
